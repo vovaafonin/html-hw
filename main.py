@@ -9,7 +9,7 @@ class MyServer(BaseHTTPRequestHandler):
 
     def __get_index(self):
 
-        with open('index.html', 'r') as file:
+        with open('index.html', 'r', encoding="utf-8") as file:
             response = file.read()
 
         return response
@@ -21,7 +21,7 @@ class MyServer(BaseHTTPRequestHandler):
         self.send_response(200)
         self.send_header("Content-type", "text/html")
         self.end_headers()
-        self.wfile.write(bytes(page_content, "cp1251"))
+        self.wfile.write(bytes(page_content, "utf-8"))
 
 
 if __name__ == "__main__":
